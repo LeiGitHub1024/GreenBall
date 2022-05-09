@@ -56,6 +56,12 @@
   
   </content>
   <script>
+    let ctn = document.querySelectorAll('body')[0]
+    ctn.addEventListener('dblclick',()=>{
+      location.reload();
+    })
+    
+
     async function action(){
       function dp1(id){
       if(id>8) return
@@ -83,7 +89,6 @@
     }
     action()
     console.log('参考视频：','https://www.bilibili.com/video/BV1bK411n7ej/?spm_id_from=333.788.recommend_more_video.2');
-    
     
 
 
