@@ -114,29 +114,29 @@
     
     async function action(){
       //左右运动
-    //   document.getElementById('body').className='content_lr'
-    //   function dp1(id){
-    //   if(id>8) return
-    //   setTimeout(() => {
-    //     document.getElementById(id).className="ball" + id%2
-    //     dp1(id+1)
-    //   }, 1000);
-    // }
-    // function dp2(id){
-    //   if(id<0) return
-    //   setTimeout(() => {
-    //     document.getElementById(id).className="ball" + (1-id%2)
-    //     dp2(id-1)
-    //   }, 1000);
-    // }
-    // for(let i=1;i<9;i+=1){   
-    //   document.getElementById(i).setAttribute('style', 'height: 10vh;width:10vh');
-    //   document.getElementById(i).className=i%2==1?'left_ball':'right_ball'
-    // }
-    // dp1(1)
-    // await new Promise(resolve=>setTimeout(resolve, 9000))
-    // dp2(8)
-    // await new Promise(resolve=>setTimeout(resolve, 9000))
+      document.getElementById('body').className='content_lr'
+      function dp1(id){
+      if(id>8) return
+      setTimeout(() => {
+        document.getElementById(id).className="ball" + id%2
+        dp1(id+1)
+      }, 1000);
+    }
+    function dp2(id){
+      if(id<0) return
+      setTimeout(() => {
+        document.getElementById(id).className="ball" + (1-id%2)
+        dp2(id-1)
+      }, 1000);
+    }
+    for(let i=1;i<9;i+=1){   
+      document.getElementById(i).setAttribute('style', 'height: 10vh;width:10vh');
+      document.getElementById(i).className=i%2==1?'left_ball':'right_ball'
+    }
+    dp1(1)
+    await new Promise(resolve=>setTimeout(resolve, 9000))
+    dp2(8)
+    await new Promise(resolve=>setTimeout(resolve, 9000))
 
     //上下运动
     document.getElementById('body').className='content_ud'
