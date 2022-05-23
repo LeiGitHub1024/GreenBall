@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>眼球运动</title>
+  <style>
+    content>div{
+      background-color: #024200;
+      border-radius: 100%;
+      height: 5vw;
+      width: 5vw;
+    }
+
+    .up_ball{
+      display: inline-block;
+      transform: translateY(0)
+    }
+    .down_ball{
+      display: inline-block;
+      transform: translateY(100vh) translateY(-15vw)
+    }
+    .ball_to_down{    /* 左向右ball1 */
+      display: inline-block;
+      animation-name:up2down;
+      animation-duration: 1s;
+      animation-fill-mode : forwards;
+      transition-timing-function:linear;
+    }
+    @keyframes up2down{
+      0% {}
+      100% {transform: translateY(100vh) translateY(-15vw);}
+    }
+    .ball_to_up{    /* //右向左ball0 */
+      display: inline-block;
+      animation-name:down2up;
+      animation-duration: 1s;
+      animation-fill-mode : forwards;
+      transition-timing-function:linear;
+    }
+    @keyframes down2up{
+      0% {transform: translateY(100vh) translateY(-15vw)}
+      100% {transform: translateY(0) }
+    }
+
+
+  </style>
+</head>
+<body style="background-color: #cad7bc;" >
+  <content style=" margin: 5vw; white-space:nowrap;">
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <div id="4"></div>
+    <div id="5"></div>
+    <div id="6"></div>
+    <div id="7"></div>
+    <div id="8"></div>
+    <div id="9"></div>
+    <div id="10"></div>
+    <div id="11"></div>
+    <div id="12"></div>
+    <div id="13"></div>
+    <div id="14"></div>
+    <div id="15"></div>
+    <div id="16"></div>
+  
+  </content>
+  <script>
+    //为双击时间添加刷新效果
+    let ctn = document.querySelectorAll('body')[0]
+    ctn.addEventListener('dblclick',()=>{
+      location.reload();
+    })
+    
+    async function action(){
+
+      function dfs3(id){
+        if(id>16) return
+        setTimeout(() => {
+          document.getElementById(id).className= "ball" + (id%2==1?'_to_down':'_to_up')
+          dfs3(id+1)
+        }, 1000);
+      }
+      function dfs4(id){
+        if(id<1) return
+        setTimeout(() => {
+          document.getElementById(id).className="ball" + (id%2==1?'_to_up':'_to_down')
+          dfs4(id-1)
+        }, 1000);
+      }
+
+      for(let i=1;i<17;i++){
+        if(i%2==0){
+          document.getElementById(i).className='down_ball'
+        }else{
+          document.getElementById(i).className='up_ball'
+        }
+      }
+      dfs3(1)
+      await new Promise(resolve=>setTimeout(resolve, 17000))
+      dfs4(16)
+      await new Promise(resolve=>setTimeout(resolve, 17000))
+
+    }
+
+
+
+
+    action()
+    
+
+
+  </script>
+  
+</body>
+
+
+</html>
